@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.eclipselabs.dte.feature_0.0.0.jar" id="org.eclipselabs.dte.feature" version="0.0.0">
+      <category name="dte"/>
+   </feature>
+   <category-def name="dte" label="Default Text Editor">
+      <description>
+         Makes the internal text editor of Eclipse to be the default editor for unknown files.
+      </description>
+   </category-def>
+</site>

@@ -28,3 +28,7 @@ Drag this button to your Eclipse workbench to install:
 Or install this plugin by using ```Help > Install New Software...``` and add the update site:
 <pre>https://dl.bintray.com/kaloyan-raev/default-text-editor/</pre>
 
+License
+-------
+
+This is open source software under the Eclipse Public License. See the [LICENSE](LICENSE) file for details.

@@ -17,21 +17,14 @@ Requirements
 Installation
 ------------
 
-* #### Eclipse Marketplace:
-<table style="border: none;">
-  <tbody>
-    <tr style="border:none;">
-      <td style="vertical-align: middle; padding-top: 10px; border: none;">
-        <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2299057" class="drag" title="Drag to your running Eclipse workspace to install Default Text Editor"><img src="https://marketplace.eclipse.org/sites/all/themes/solstice/_themes/solstice_marketplace/public/images/btn-install.png" alt="Drag to your running Eclipse workspace to install Default Text Editor" /></a>
-      </td>
-      <td style="vertical-align: middle; text-align: left; border: none;">
-        ← Drag this button to your Eclipse workbench to install;
-      </td>
-    </tr>
-  </tbody>
-</table>
+#### Eclipse Marketplace
 
-* #### Update site:
-Or download this plugin by using ```Help > Install New Software...``` and add the update site:
+Drag this button to your Eclipse workbench to install:
+
+[![Drag to your running Eclipse workspace to install Default Text Editor](https://marketplace.eclipse.org/sites/all/themes/solstice/_themes/solstice_marketplace/public/images/btn-install.png)](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2299057)
+
+#### Update site
+
+Or install this plugin by using ```Help > Install New Software...``` and add the update site:
 <pre>https://dl.bintray.com/kaloyan-raev/default-text-editor/</pre>
 

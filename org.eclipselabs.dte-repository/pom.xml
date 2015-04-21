@@ -9,4 +9,8 @@
   </parent>
   <artifactId>repository</artifactId>
   <packaging>eclipse-repository</packaging>
+  
+  <build>
+    <finalName>repository</finalName>
+  </build>
 </project>

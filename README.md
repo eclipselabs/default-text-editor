@@ -12,7 +12,7 @@ This plugin overrides the default open file behavior of Eclipse and will avoid o
 Requirements
 ------------
 
-* Eclipse 3.8+
+* Eclipse Juno (4.2, 3.8) or newer
 
 Installation
 ------------

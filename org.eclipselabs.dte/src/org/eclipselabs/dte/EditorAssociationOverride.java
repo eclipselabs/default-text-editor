@@ -15,6 +15,7 @@ import static org.eclipse.ui.editors.text.EditorsUI.DEFAULT_TEXT_EDITOR_ID;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 
 import org.eclipse.core.runtime.content.IContentType;
 import org.eclipse.ui.IEditorDescriptor;
@@ -45,13 +46,20 @@ public class EditorAssociationOverride implements IEditorAssociationOverride {
         // Override with default text editor only if no association is found yet
         if (editorDescriptor == null) {
             IURIEditorInput uriEditorInput = (IURIEditorInput) editorInput;
-            try {
-                InputStream is = uriEditorInput.getURI().toURL().openStream();
-                if (TextFileDetector.isTextFile(is)) {
-                    return getTextEditorDescriptor();
+            URI uri = uriEditorInput.getURI();
+            if (uri != null) {
+                InputStream is = null;
+                try {
+                    is = uri.toURL().openStream();
+                    if (TextFileDetector.isTextFile(is)) {
+                        return getTextEditorDescriptor();
+                    }
+                } catch (IOException e) {
+                    // Problem reading the editor input - avoid overriding
+                } finally {
+                    // Make sure the input stream is closed
+                    close(is);
                 }
-            } catch (IOException e) {
-                // Problem reading the editor input - avoid overriding
             }
         }
         return editorDescriptor;
@@ -61,12 +69,17 @@ public class EditorAssociationOverride implements IEditorAssociationOverride {
             IContentType contentType, IEditorDescriptor editorDescriptor) {
         // Override with default text editor only if no association is found yet
         if (editorDescriptor == null) {
+            FileInputStream fis = null;
             try {
-                if (TextFileDetector.isTextFile(new FileInputStream(fileName))) {
+                fis = new FileInputStream(fileName);
+                if (TextFileDetector.isTextFile(fis)) {
                     return getTextEditorDescriptor();
                 }
             } catch (IOException e) {
                 // Problem reading the editor input - avoid overriding
+            } finally {
+                // Make sure the file input stream is closed
+                close(fis);
             }
         }
         return editorDescriptor;
@@ -75,6 +88,16 @@ public class EditorAssociationOverride implements IEditorAssociationOverride {
     private IEditorDescriptor getTextEditorDescriptor() {
         return PlatformUI.getWorkbench().getEditorRegistry()
                 .findEditor(DEFAULT_TEXT_EDITOR_ID);
+    }
+
+    private void close(InputStream is) {
+        if (is != null) {
+            try {
+                is.close();
+            } catch (IOException e) {
+                // Error closing the file input stream - ignore it
+            }
+        }
     }
 
 }

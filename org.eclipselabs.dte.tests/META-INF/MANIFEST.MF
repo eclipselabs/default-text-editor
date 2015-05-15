@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Default Text Editor Tests
+Bundle-SymbolicName: org.eclipselabs.dte.tests
+Bundle-Version: 1.1.0.qualifier
+Bundle-Vendor: Kaloyan Raev
+Fragment-Host: org.eclipselabs.dte
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.junit;bundle-version="[4.0.0,5.0.0)"

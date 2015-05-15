@@ -33,6 +33,7 @@
 
   <modules>
     <module>org.eclipselabs.dte</module>
+    <module>org.eclipselabs.dte.tests</module>
     <module>org.eclipselabs.dte-feature</module>
     <module>org.eclipselabs.dte-repository</module>
   </modules>

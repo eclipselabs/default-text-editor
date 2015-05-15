@@ -29,5 +29,19 @@ public class KnownFileTypesExtensionsTest {
 	public void testRemoveLeadingUnderscoreFromName() {
 		assertEquals("7Z", KnownBinaryFileExtensions._7Z.toString());
 	}
+	
+	@Test
+	public void testUniqueInstanceForKnownBinaryFileExtensions() {
+		Set<String> s1 = KnownBinaryFileExtensions.set();
+		Set<String> s2 = KnownBinaryFileExtensions.set();
+		assertEquals(System.identityHashCode(s1), System.identityHashCode(s2));
+	}
+
+	@Test
+	public void testUniqueInstanceForKnownTextBasedFileExtensions() {
+		Set<String> s1 = KnownTextBasedFileExtensions.set();
+		Set<String> s2 = KnownTextBasedFileExtensions.set();
+		assertEquals(System.identityHashCode(s1), System.identityHashCode(s2));
+	}
 
 }

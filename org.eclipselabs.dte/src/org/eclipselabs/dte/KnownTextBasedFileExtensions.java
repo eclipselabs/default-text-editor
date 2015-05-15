@@ -123,6 +123,8 @@ public enum KnownTextBasedFileExtensions {
     XHTML,
     /** XML File */
     XML;
+
+    private static Set<String> cached = null;
     
     /**
      * Returns the enumeration as a set.
@@ -130,13 +132,17 @@ public enum KnownTextBasedFileExtensions {
      * @return an unmodifiable set.
      */
     public static Set<String> set() {
-        Set<String> set = new HashSet<String>();
+        if (cached == null) {
+            Set<String> set = new HashSet<String>();
 
-        for (KnownTextBasedFileExtensions v : values()) {
-            set.add(v.toString());
+            for (KnownTextBasedFileExtensions v : values()) {
+                set.add(v.toString());
+            }
+
+            cached = Collections.unmodifiableSet(set);
         }
 
-        return Collections.unmodifiableSet(set);
+        return cached;
     }
 
     @Override

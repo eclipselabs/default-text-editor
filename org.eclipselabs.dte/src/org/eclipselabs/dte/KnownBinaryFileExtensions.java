@@ -302,19 +302,25 @@ public enum KnownBinaryFileExtensions {
     /** Extended Zip File */
     ZIPX;
 
+    private static Set<String> cached = null;
+
     /**
      * Returns the enumeration as a set.
      * 
      * @return an unmodifiable set.
      */
     public static Set<String> set() {
-        Set<String> set = new HashSet<String>();
+        if (cached == null) {
+            Set<String> set = new HashSet<String>();
 
-        for (KnownBinaryFileExtensions v : values()) {
-            set.add(v.toString());
+            for (KnownBinaryFileExtensions v : values()) {
+                set.add(v.toString());
+            }
+
+            cached = Collections.unmodifiableSet(set);
         }
 
-        return Collections.unmodifiableSet(set);
+        return cached;
     }
 
     @Override

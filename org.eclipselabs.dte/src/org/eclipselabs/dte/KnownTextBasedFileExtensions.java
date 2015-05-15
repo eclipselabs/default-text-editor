@@ -51,6 +51,8 @@ public enum KnownTextBasedFileExtensions {
     DTD,
     /** Drawing Exchange Format File */
     DXF,
+    /** E-Mail Message */
+    EML,
     /** GEDCOM Genealogy Data File */
     GED,
     /** GPS Exchange File */

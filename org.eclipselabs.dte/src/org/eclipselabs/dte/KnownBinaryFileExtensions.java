@@ -31,8 +31,16 @@ public enum KnownBinaryFileExtensions {
     _7Z,
     /** Access 2007 Database File */
     ACCDB,
+    /** WinAce Compressed File */
+    ACE,
+    /** Adobe Illustrator File */
+    AI,
     /** Audio Interchange File Format */
     AIF,
+    /** Audio Interchange File Format */
+    AIFF,
+    /** Adaptive Multi-Rate Codec File */
+    AMR,
     /** Android Package File */
     APK,
     /** Mac OS X Application */
@@ -49,6 +57,12 @@ public enum KnownBinaryFileExtensions {
     CAB,
     /** Comic Book RAR Archive */
     CBR,
+    /** CD Audio Track Shortcut */
+    CDA,
+    /** CorelDRAW Image File */
+    CDR,
+    /** Compiled HTML Help File */
+    CHM,
     /** Java Class File */
     CLASS,
     /** DOS Command File */
@@ -69,6 +83,8 @@ public enum KnownBinaryFileExtensions {
     DDS,
     /** Debian Software Package */
     DEB,
+    /** DivX-Encoded Movie File */
+    DIVX,
     /** Dynamic Link Library */
     DLL,
     /** Mac OS X Disk Image */
@@ -81,6 +97,10 @@ public enum KnownBinaryFileExtensions {
     DOCX,
     /** Device Driver */
     DRV,
+    /** Digital Speech Standard File */
+    DSS,
+    /** Sony Digital Voice File */
+    DVF,
     /** AutoCAD Drawing Database File */
     DWG,
     /** Encapsulated PostScript File */
@@ -103,16 +123,22 @@ public enum KnownBinaryFileExtensions {
     GIF,
     /** Gnu Zipped Archive */
     GZ,
+    /** BinHex 4.0 Encoded File */
+    HQX,
     /** Mac OS X Icon Resource File */
     ICNS,
     /** Interchange File Format */
     IFF,
+    /** DVD-Video Disc Information File */
+    IFO,
     /** Adobe InDesign Document */
     INDD,
     /** Disc Image File */
     ISO,
     /** Java Archive File */
     JAR,
+    /** JPEG Image */
+    JPEG,
     /** JPEG Image */
     JPG,
     /** Keynote Presentation */
@@ -125,6 +151,10 @@ public enum KnownBinaryFileExtensions {
     LNK,
     /** MPEG-4 Audio File */
     M4A,
+    /** MPEG-4 Audio Book File */
+    M4B,
+    /** iTunes Music Store Audio File */
+    M4P,
     /** iTunes Video File */
     M4V,
     /** 3ds Max Scene File */
@@ -137,12 +167,16 @@ public enum KnownBinaryFileExtensions {
     MID,
     /** Apple QuickTime Movie */
     MOV,
+    /** MPEG Layer II Compressed Audio File */
+    MP2,
     /** MP3 Audio File */
     MP3,
     /** MPEG-4 Video File */
     MP4,
     /** MPEG-2 Audio File */
     MPA,
+    /** MPEG Movie */
+    MPEG,
     /** MPEG Video File */
     MPG,
     /** Outlook Mail Message */
@@ -155,6 +189,8 @@ public enum KnownBinaryFileExtensions {
     OBJ,
     /** OpenDocument Text Document */
     ODT,
+    /** Ogg Vorbis Audio File */
+    OGG,
     /** OpenType Font */
     OTF,
     /** Pages Document */
@@ -183,12 +219,26 @@ public enum KnownBinaryFileExtensions {
     PSD,
     /** PaintShop Pro Image */
     PSPIMAGE,
+    /** Outlook Personal Information Store File */
+    PST,
+    /** Microsoft Publisher Document */
+    PUB,
+    /** QuickBooks Backup File */
+    QBB,
+    /** QuickBooks Data File */
+    QBW,
+    /** QuarkXPress Document */
+    QXD,
     /** Real Audio File */
     RA,
+    /** Real Audio Metadata File */
+    RAM,
     /** WinRAR Compressed Archive */
     RAR,
     /** Real Media File */
     RM,
+    /** RealMedia Variable Bit Rate File */
+    RMVB,
     /** N64 Game ROM File */
     ROM,
     /** Red Hat Package Manager File */
@@ -197,6 +247,10 @@ public enum KnownBinaryFileExtensions {
     RTF,
     /** Saved Game */
     SAV,
+    /** Self-Extracting Archive */
+    SEA,
+    /** StuffIt Archive */
+    SIT,
     /** StuffIt X Archive */
     SITX,
     /** Shockwave Flash Movie */
@@ -207,6 +261,8 @@ public enum KnownBinaryFileExtensions {
     TAR,
     /** Targa Graphic */
     TGA,
+    /** Gzipped Tar File */
+    TGZ,
     /** Thumbnail Image File */
     THM,
     /** Tagged Image File */
@@ -227,7 +283,7 @@ public enum KnownBinaryFileExtensions {
     WAV,
     /** Windows Media Audio File */
     WMA,
-    /** WAVE Audio File */
+    /** Windows Media Video File */
     WMV,
     /** WordPerfect Document */
     WPD,

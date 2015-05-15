@@ -10,8 +10,13 @@
  *******************************************************************************/
 package org.eclipselabs.dte;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+
+import org.apache.commons.io.FilenameUtils;
+import org.eclipse.ui.IURIEditorInput;
 
 import com.ibm.icu.text.CharsetDetector;
 import com.ibm.icu.text.CharsetMatch;
@@ -20,6 +25,84 @@ import com.ibm.icu.text.CharsetMatch;
  * Utility class for detecting if file is text or binary.
  */
 public class TextFileDetector {
+
+    /**
+     * Checks if a file is text or binary.
+     * 
+     * <p>
+     * This method will first check if the file extension is known to be for a
+     * binary or a text-based file. If the file extension is unknown then it
+     * will try to analyze the file content.
+     * </p>
+     * 
+     * @param input
+     *            an editor input of the file
+     * @return <code>true</code> if the file is more likely to be text file than
+     *         binary file, <code>false</code> otherwise.
+     */
+    public static boolean isTextFile(IURIEditorInput input) {
+        String extension = FilenameUtils.getExtension(input.getName())
+                .toUpperCase();
+
+        if (KnownTextBasedFileExtensions.set().contains(extension)) {
+            return true;
+        } else if (KnownBinaryFileExtensions.set().contains(extension)) {
+            return false;
+        } else {
+            URI uri = input.getURI();
+            if (uri != null) {
+                InputStream is = null;
+                try {
+                    is = uri.toURL().openStream();
+                    return TextFileDetector.isTextFile(is);
+                } catch (IOException e) {
+                    // Problem reading the editor input - avoid overriding
+                } finally {
+                    // Make sure the input stream is closed
+                    close(is);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Checks if a file is text or binary.
+     * 
+     * <p>
+     * This method will first check if the file extension is known to be for a
+     * binary or a text-based file. If the file extension is unknown then it
+     * will try to analyze the file content.
+     * </p>
+     * 
+     * @param fileName
+     *            a file name
+     * @return <code>true</code> if the file is more likely to be text file than
+     *         binary file, <code>false</code> otherwise.
+     */
+    public static boolean isTextFile(String fileName) {
+        String extension = FilenameUtils.getExtension(fileName).toUpperCase();
+
+        if (KnownTextBasedFileExtensions.set().contains(extension)) {
+            return true;
+        } else if (KnownBinaryFileExtensions.set().contains(extension)) {
+            return false;
+        } else {
+            FileInputStream fis = null;
+            try {
+                fis = new FileInputStream(fileName);
+                return isTextFile(fis);
+            } catch (IOException e) {
+                // Problem reading the editor input - avoid overriding
+            } finally {
+                // Make sure the file input stream is closed
+                close(fis);
+            }
+        }
+
+        return false;
+    }
 
     /**
      * Checks if a file is text or binary.
@@ -46,4 +129,19 @@ public class TextFileDetector {
         return match.getConfidence() >= 10;
     }
 
+    /**
+     * Closes the input stream.
+     * 
+     * @param is
+     *            an input stream.
+     */
+    private static void close(InputStream is) {
+        if (is != null) {
+            try {
+                is.close();
+            } catch (IOException e) {
+                // Error closing the file input stream - ignore it
+            }
+        }
+    }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sObjects xmlns="http://www.force.com/2009/06/asyncapi/dataload">
+   <sObject>
+      <Name>Xytrex Co.</Name>
+      <Description>Industrial Cleaning Supply Company</Description>
+      <Account Number>ABC15797531</Account Number>
+   </sObject>
+   <sObject>
+      <Name>Watson and Powell, Inc.</Name>
+      <Description>Law firm. New York Headquarters</Description>
+      <Account Number>ABC24689753</Account Number>
+   </sObject>
+</sObjects>

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipselabs.dte;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,26 +42,29 @@ public class TextFileDetector {
      *         binary file, <code>false</code> otherwise.
      */
     public static boolean isTextFile(IURIEditorInput input) {
+        if (input == null)
+            return false;
+
         String extension = FilenameUtils.getExtension(input.getName())
                 .toUpperCase();
 
-        if (KnownTextBasedFileExtensions.set().contains(extension)) {
+        if (KnownTextBasedFileExtensions.set().contains(extension))
             return true;
-        } else if (KnownBinaryFileExtensions.set().contains(extension)) {
+
+        if (KnownBinaryFileExtensions.set().contains(extension))
             return false;
-        } else {
-            URI uri = input.getURI();
-            if (uri != null) {
-                InputStream is = null;
-                try {
-                    is = uri.toURL().openStream();
-                    return TextFileDetector.isTextFile(is);
-                } catch (IOException e) {
-                    // Problem reading the editor input - avoid overriding
-                } finally {
-                    // Make sure the input stream is closed
-                    close(is);
-                }
+
+        URI uri = input.getURI();
+        if (uri != null) {
+            InputStream is = null;
+            try {
+                is = uri.toURL().openStream();
+                return TextFileDetector.isTextFile(is);
+            } catch (IOException e) {
+                // Problem reading the editor input - avoid overriding
+            } finally {
+                // Make sure the input stream is closed
+                close(is);
             }
         }
 
@@ -82,23 +86,26 @@ public class TextFileDetector {
      *         binary file, <code>false</code> otherwise.
      */
     public static boolean isTextFile(String fileName) {
+        if (fileName == null)
+            return false;
+
         String extension = FilenameUtils.getExtension(fileName).toUpperCase();
 
-        if (KnownTextBasedFileExtensions.set().contains(extension)) {
+        if (KnownTextBasedFileExtensions.set().contains(extension))
             return true;
-        } else if (KnownBinaryFileExtensions.set().contains(extension)) {
+
+        if (KnownBinaryFileExtensions.set().contains(extension))
             return false;
-        } else {
-            FileInputStream fis = null;
-            try {
-                fis = new FileInputStream(fileName);
-                return isTextFile(fis);
-            } catch (IOException e) {
-                // Problem reading the editor input - avoid overriding
-            } finally {
-                // Make sure the file input stream is closed
-                close(fis);
-            }
+
+        BufferedInputStream is = null;
+        try {
+            is = new BufferedInputStream(new FileInputStream(fileName));
+            return isTextFile(is);
+        } catch (IOException e) {
+            // Problem reading the editor input - avoid overriding
+        } finally {
+            // Make sure the input streams are closed
+            close(is);
         }
 
         return false;
@@ -120,6 +127,9 @@ public class TextFileDetector {
      *             in case of error while reading from the stream
      */
     public static boolean isTextFile(InputStream is) throws IOException {
+        if (is == null)
+            return false;
+
         CharsetDetector detector = new CharsetDetector();
         detector.setText(is);
         CharsetMatch match = detector.detect();
@@ -128,6 +138,7 @@ public class TextFileDetector {
         // of 100) is detected. Empty files have confidence 10 for UTF-8.
         return match.getConfidence() >= 10;
     }
+
 
     /**
      * Closes the input stream.

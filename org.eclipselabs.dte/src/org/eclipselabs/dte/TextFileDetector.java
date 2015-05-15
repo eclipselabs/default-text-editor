@@ -45,8 +45,11 @@ public class TextFileDetector {
         if (input == null)
             return false;
 
-        String extension = FilenameUtils.getExtension(input.getName())
-                .toUpperCase();
+        String fileName = input.getName();
+        if (fileName == null)
+            return false;
+
+        String extension = FilenameUtils.getExtension(fileName).toUpperCase();
 
         if (KnownTextBasedFileExtensions.set().contains(extension))
             return true;
@@ -138,7 +141,6 @@ public class TextFileDetector {
         // of 100) is detected. Empty files have confidence 10 for UTF-8.
         return match.getConfidence() >= 10;
     }
-
 
     /**
      * Closes the input stream.

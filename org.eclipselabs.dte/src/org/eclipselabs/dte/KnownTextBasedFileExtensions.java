@@ -59,6 +59,8 @@ public enum KnownTextBasedFileExtensions {
     GPX,
     /** C/C++/Objective-C Header File */
     H,
+    /** C++ Header File */
+    HPP,
     /** Hypertext Markup Language File */
     HTM,
     /** Hypertext Markup Language File */
@@ -81,6 +83,12 @@ public enum KnownTextBasedFileExtensions {
     LUA,
     /** Objective-C Implementation File */
     M,
+    /** Markdown Documentation File */
+    MARKDOWN,
+    /** Markdown Documentation File */
+    MD,
+    /** Markdown Documentation File */
+    MDOWN,
     /** Media Playlist File */
     M3U,
     /** PHP Source Code File */
@@ -111,6 +119,10 @@ public enum KnownTextBasedFileExtensions {
     TEX,
     /** Plain Text File */
     TXT,
+    /** Visual Basic Project File */
+    VBP,
+    /** Visual Studio Visual Basic Project */
+    VBPROJ,
     /** vCard File */
     VCF,
     /** Visual C++ Project */
@@ -122,7 +134,9 @@ public enum KnownTextBasedFileExtensions {
     /** Extensible Hypertext Markup Language File */
     XHTML,
     /** XML File */
-    XML;
+    XML,
+    /** YAML Document */
+    YML;
 
     private static Set<String> cached = null;
     

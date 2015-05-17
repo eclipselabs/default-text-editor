@@ -8,21 +8,4 @@
   </parent>
   <artifactId>org.eclipselabs.dte.tests</artifactId>
   <packaging>eclipse-test-plugin</packaging>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-surefire-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <dependencies>
-            <dependency>
-              <type>eclipse-feature</type>
-              <artifactId>org.eclipse.platform</artifactId>
-            </dependency>
-          </dependencies>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

@@ -20,7 +20,6 @@ public class TextFileDetectorTest {
 
 	@Test
 	public void testNullSafety() throws IOException {
-		System.out.println(IURIEditorInput.class);
 		assertEquals(false, TextFileDetector.isTextFile((IURIEditorInput) null));
 		assertEquals(false, TextFileDetector.isTextFile((String) null));
 		assertEquals(false, TextFileDetector.isTextFile((InputStream) null));

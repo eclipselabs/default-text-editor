@@ -2,9 +2,17 @@ language: java
 
 jdk: oraclejdk7
 
+env: DISPLAY=:99.0
+
 install: true
 
-script: mvn clean verify
+before_script
+ - sh -e /etc/init.d/xvfb start
+ - sleep 10 # give xvfb some time to start
+
+script:
+ - export 
+ - mvn clean verify
 
 after_success:
   # Upload the repository to the snapshot update site on Bintray
@@ -12,5 +20,3 @@ after_success:
   - curl -X DELETE -ukaloyan-raev:$BINTRAY_KEY https://api.bintray.com/packages/kaloyan-raev/default-text-editor/update-site/versions/snapshot
   # 2. Upload the repository.zip to a new version with name "snapshot", unzip it and publish it
   - curl -T org.eclipselabs.dte-repository/target/repository.zip -ukaloyan-raev:$BINTRAY_KEY "https://api.bintray.com/content/kaloyan-raev/default-text-editor/update-site/snapshot/snapshot/repository.zip?publish=1&explode=1"
-
-after_failure: cat /home/travis/build/eclipselabs/default-text-editor/org.eclipselabs.dte.tests/target/surefire-reports/*

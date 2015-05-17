@@ -17,20 +17,11 @@
         <configuration>
           <dependencies>
             <dependency>
-              <type>eclipse-plugin</type>
-              <artifactId>org.eclipse.ui.ide</artifactId>
-              <version>0.0.0</version>
+              <type>eclipse-feature</type>
+              <artifactId>org.eclipse.platform</artifactId>
             </dependency>
           </dependencies>
         </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test</goal>
-            </goals>
-            <phase>test</phase>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

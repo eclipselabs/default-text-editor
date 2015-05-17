@@ -17,7 +17,7 @@
         <configuration>
           <dependencies>
             <dependency>
-              <type>p2-installable-unit</type>
+              <type>eclipse-plugin</type>
               <artifactId>org.eclipse.ui.ide</artifactId>
             </dependency>
           </dependencies>

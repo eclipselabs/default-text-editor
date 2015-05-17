@@ -17,8 +17,8 @@
         <configuration>
           <dependencies>
             <dependency>
-              <type>eclipse-plugin</type>
-              <artifactId>org.eclipse.ui.ide</artifactId>
+              <type>eclipse-feature</type>
+              <artifactId>org.eclipse.platform</artifactId>
             </dependency>
           </dependencies>
         </configuration>

@@ -2,7 +2,7 @@
 <feature
       id="org.eclipselabs.dte.feature"
       label="Default Text Editor"
-      version="1.1.0.qualifier"
+      version="1.2.0.qualifier"
       provider-name="Kaloyan Raev">
 
    <description url="https://github.com/kaloyan-raev/default-text-editor/blob/master/README.md">

@@ -8,5 +8,20 @@
             id="org.eclipselabs.dte.editorAssociationOverride">
       </editorAssociationOverride>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.ui.preferencePages.Editors"
+            class="org.eclipselabs.dte.preferences.PreferencePage"
+            id="org.eclipselabs.dte.preferences.PreferencePage"
+            name="Default Text Editor">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipselabs.dte.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
 
 </plugin>

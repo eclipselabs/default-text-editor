@@ -18,6 +18,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IURIEditorInput;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IEditorAssociationOverride;
+import org.eclipselabs.dte.preferences.PreferenceConstants;
 
 /**
  * Overrides the default editor of text files, which have no editor association,
@@ -44,6 +45,7 @@ public class EditorAssociationOverride implements IEditorAssociationOverride {
         // Override with default text editor only if no association is found yet
         if (editorDescriptor == null && editorInput != null
                 && editorInput instanceof IURIEditorInput
+                && isOverrideEnabled()
                 && TextFileDetector.isTextFile((IURIEditorInput) editorInput)) {
             return getTextEditorDescriptor();
         }
@@ -54,7 +56,7 @@ public class EditorAssociationOverride implements IEditorAssociationOverride {
     public IEditorDescriptor overrideDefaultEditor(String fileName,
             IContentType contentType, IEditorDescriptor editorDescriptor) {
         // Override with default text editor only if no association is found yet
-        if (editorDescriptor == null && fileName != null
+        if (editorDescriptor == null && fileName != null && isOverrideEnabled()
                 && TextFileDetector.isTextFile(fileName)) {
             return getTextEditorDescriptor();
         }
@@ -64,6 +66,11 @@ public class EditorAssociationOverride implements IEditorAssociationOverride {
     private IEditorDescriptor getTextEditorDescriptor() {
         return PlatformUI.getWorkbench().getEditorRegistry()
                 .findEditor(DEFAULT_TEXT_EDITOR_ID);
+    }
+
+    private boolean isOverrideEnabled() {
+        return Activator.getDefault().getPreferenceStore()
+                .getBoolean(PreferenceConstants.ENABLED);
     }
 
 }

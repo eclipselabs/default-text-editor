@@ -139,7 +139,7 @@ public class TextFileDetector {
 
         // The file is text if a charset with confidence of at least 10 (out
         // of 100) is detected. Empty files have confidence 10 for UTF-8.
-        return match.getConfidence() >= 10;
+        return match != null && match.getConfidence() >= 10;
     }
 
     /**

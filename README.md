@@ -3,6 +3,8 @@ Default Text Editor plug-in for Eclipse
 
 [![Build Status](https://travis-ci.org/eclipselabs/default-text-editor.svg?branch=master)](https://travis-ci.org/eclipselabs/default-text-editor)
 
+_**NOTE.** The functionality of the Default Text Editor plugin has been implemented in the Eclipse Platform with the Neon release. Check the [release notes](https://www.eclipse.org/eclipse/news/4.6/platform.php#text-editor-selection-strategy) for details._
+
 Makes the internal text editor in Eclipse to be the default editor for unknown files.
 
 If there is no editor associated with the file being opened then Eclipse consults the operating system if there is an external editor available for this file. If positive then the file is opened in the system editor outside of Eclipse. This may not be the desired behavior for some users who want to keep opening all text files in Eclipse even if it is done just in the plain text editor.
